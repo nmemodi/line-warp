@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Line Warp — Create Logos from Displaced Lines</title>
+<meta name="description" content="A free, browser-based tool that creates logos by displacing horizontal lines with a letter heightmap. No signup, no dependencies.">
+<meta property="og:title" content="Line Warp">
+<meta property="og:description" content="Create logos by displacing horizontal lines with a letter heightmap. Free, open-source, runs in your browser.">
+<meta property="og:image" content="https://natemodi.com/line-warp/og-image.png">
+<meta property="og:url" content="https://natemodi.com/line-warp/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Line Warp">
+<meta name="twitter:description" content="Create logos by displacing horizontal lines with a letter heightmap.">
+<meta name="twitter:image" content="https://natemodi.com/line-warp/og-image.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAF7klEQVR4AezYC5bjNBCF4YaNASsDVgasDPwlfXXU1VYsPzJzmHSf/JGsR9Wta9k5Mz+/vfjflwEvfgDevk5AOQH/LtevwFLm/fN1Au4+vO73tzgB/yz2hj+X/iOyLu2y/LmfasBvS7qz/LTE6Pl1ucYfS/v3O0vz6WPOGmtDH0f/rLbsb8mrAUScJeIVI1Zeqn8tWcPvS7+Suay3VwyIuWx5M3YFb/mrBki2l14Q8SlEgb8k0YHWXjEgpthIvr06+/VNTjVAsr0QGlrg906eZc99jt9Way3sfQ/zoUmuvTr79S1gNaBNnOgQniIdXXA/d26rtRb2ee6ZgROSxluvMqAWrUhZFaK/hrmefk3GmZD+U8yoBihkBncE7jRhhCpA0VrPqufWscuRra25nn4+42KIFRPSyik3DWFGd9bQeaMaoJAZIkSxAtmjT7BCjF1JDIkZYssXHVoaNlk2WrM090814D76+FsASEoEUc8qfE0JM+QEDaAHa+sfjlUDBN1CsSBk7W7nmDmiPTmqDwXtnKQB9GBLe+ZbmmpAmzjQUbiC3Qk4HT3uFPL8WhtTtK6DNcGYefEPyHq85QoDCCMyRcuor9gYoA9zqOPmMqa1Jrg2LyZTmJG50+1RA1J0LZxQx8xxdDQ9ItCHuRRkraJm6Au1jxFyM4OWfn5Xvxog6AhJA9EKgYREKU6Rrh/RG8KoGcSWA4ktt2taoks70t+PJ8an/xITdETb9N6R2FriZgp/33a4kQPyKRw01IA0bdH21BMg6Ig+KBHunLvZgg06juiIwZbNYUaABlp6bSP9/XhLUA0QdIRiQwsw6CjYkXMk3aUR5iv2wfMNsQZp2nB0aUf6+/G2sRrQJg50CCVcQQp2Vw6EebMPuWNiiTlrxtuev7MGKBoKJ5TwPr8xKMZccGy3sNY+iKkV61IzqgFcnkHBIAjEEolcG/OMwvFzPIN1W1hrH5glHhPs08rDDDpmNPdrxLhRDRB4BmJwC7J8EeOaUAUTj2Xqso94MSMaBZc317OtfTeqAQqZRTLJ+6JvQb/BFyMgNx1hVnuTWA1w92YhwF1pwU52vEscU0fa0e4xZm4tBR1hVnuLUw1oExd0FATC11AUUqi75046VTW9MXPWilXnh9dbE1caoFgFgVAFgfA1FIWqMXvMhey3Vl98RsDYYY4aoFgQ0BccwQQppGK8kjX2eqYdY0fa4xVcwzwDxNCiN4Mmc9NUAwSbIaIJIFxCY/ogVCEV45WsUaw4W1QjrKcDNMzot+dGNeA2OPklGfqCFYHJEKeW9UYo/lCwaoBiZnAX9965WYGOceXRXkaAJszob/GqAe7eDC3ASof4/t1Qj6R3xghrnaqKcTGxkvLD0C791YAPkXZeKFxhxDuS7sRaCOMj1tZnTEzEjIyfas8akKKJUrjCIsg1jO2hHmNFi5O4WmNyOhEwdohqgGBbuMsggDDFJXmujfXviJljmTVipa/1fIvFGIWbD65BC03Y0m8++z/9l5hgWygOCaJoGCOUaGT+ypYZMYLOPrb8ML5F21dPgEK2SHDJoGg8q+gmtuswAsygIZq2tGe+haoGKGQLiaFgtGDfqUMDPdjSnvkmtRrQJi7ueFnC89fjmUU/pm/txRLWwz3DAOKhMHhB5ejlqKZ1fJHrtNbbBzGeZspRAxTYQyChBBMPhWHd+vlRMRgjpvjyyIdew3zEbmU1QIIZiOkhkNAu9KduXW9PJWs+be4G5Mm+rNfedC/rZtpl2f1TDbiPHvsmIhBIKLypkReQ1gtrDXOwPoghHhL/mMKVXdUAyfYQkVrCg+K8nbGSdteQGOIh8eULe/RmbRNQDZBsDy3Qd+zs0Zu1TW41oE28SufLgHKn/bTsxc/SLDNvaGtm4+3VmvWt7HoCvGn3khfLTNsSb3RmYlmzV2vWt/TVgPzMXNkm6dH2Si2JNTQgPzNXtn6+znCllsQaGtAmXqVTH4FXqbvVWQ3o/3HxI/eHBuQl8aO3QwPaxKt06iPwKnW3Ov/3BrRKDnb+AwAA//9P/v7JAAAABklEQVQDAMPsna6H43n6AAAAAElFTkSuQmCC">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    display: flex;
+    min-height: 100vh;
+    background: #e8e4e0;
+    font-family: -apple-system, system-ui, sans-serif;
+    color: #333;
+  }
+  .sidebar {
+    width: 280px;
+    padding: 24px 20px;
+    background: #fff;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .sidebar h1 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .sidebar p { font-size: 12px; color: #888; }
+  .control { display: flex; flex-direction: column; gap: 4px; }
+  .control label {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+  .control label span { font-weight: 400; color: #999; }
+  .control input[type="range"] { width: 100%; accent-color: #333; }
+  .control input[type="text"] {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    text-align: center;
+    width: 100%;
+  }
+  .control select {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: inherit;
+    background: #fff;
+  }
+  .row { display: flex; gap: 8px; }
+  .row .control { flex: 1; }
+  hr { border: none; border-top: 1px solid #eee; }
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  canvas {
+    box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    border-radius: 4px;
+    max-width: 100%;
+    max-height: 80vh;
+  }
+  .actions { display: flex; gap: 8px; margin-top: auto; }
+  .actions button {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .actions button:hover { background: #f5f5f5; }
+  .actions button.primary {
+    background: #333;
+    color: #fff;
+    border-color: #333;
+  }
+  .actions button.primary:hover { background: #555; }
+  .checkbox-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .checkbox-control input { accent-color: #333; }
+  .sidebar-footer {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .sidebar-footer a { color: #aaa; text-decoration: none; }
+  .sidebar-footer a:hover { color: #666; }
+  @media (max-width: 700px) {
+    body { flex-direction: column; }
+    .sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+      max-height: 50vh;
+    }
+    .main { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div>
+    <h1>Line Warp</h1>
+    <p>Create logos from displaced lines</p>
+  </div>
+
+  <hr>
+
+  <div class="control">
+    <label>Letter</label>
+    <input type="text" id="letter" value="S" maxlength="2">
+  </div>
+
+  <div class="row">
+    <div class="control">
+      <label>Font <span id="fontVal"></span></label>
+      <select id="font">
+        <option value="Helvetica Neue">Helvetica Neue</option>
+        <option value="Arial Black">Arial Black</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Impact">Impact</option>
+        <option value="Futura">Futura</option>
+        <option value="Times New Roman">Times New Roman</option>
+      </select>
+    </div>
+    <div class="control">
+      <label>Weight <span id="weightVal"></span></label>
+      <select id="fontWeight">
+        <option value="900" selected>900 (Black)</option>
+        <option value="800">800 (Extra Bold)</option>
+        <option value="700">700 (Bold)</option>
+        <option value="600">600 (Semi Bold)</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="control">
+    <label>Rotation <span id="rotationVal"></span></label>
+    <input type="range" id="rotation" min="0" max="359" value="0" step="1">
+  </div>
+
+  <div class="row">
+    <div class="control">
+      <label>Offset X <span id="offsetXVal"></span></label>
+      <input type="range" id="offsetX" min="-200" max="200" value="0" step="1">
+    </div>
+    <div class="control">
+      <label>Offset Y <span id="offsetYVal"></span></label>
+      <input type="range" id="offsetY" min="-200" max="200" value="0" step="1">
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="control">
+    <label>Lines <span id="linesVal"></span></label>
+    <input type="range" id="lines" min="5" max="25" value="13" step="1">
+  </div>
+
+  <div class="control">
+    <label>Displacement <span id="dispVal"></span></label>
+    <input type="range" id="displacement" min="0" max="150" value="65" step="1">
+  </div>
+
+  <div class="control">
+    <label>Blur (Smoothing) <span id="blurVal"></span></label>
+    <input type="range" id="blur" min="5" max="60" value="28" step="1">
+  </div>
+
+  <div class="control">
+    <label>Ridge <span id="ridgeVal"></span></label>
+    <input type="range" id="ridge" min="0" max="100" value="0" step="1">
+  </div>
+
+  <div class="control">
+    <label>Gap Ratio <span id="gapVal"></span></label>
+    <input type="range" id="gap" min="0.1" max="0.7" value="0.35" step="0.01">
+  </div>
+
+  <div class="control">
+    <label>Letter Size <span id="letterSizeVal"></span></label>
+    <input type="range" id="letterSize" min="0.3" max="1.0" value="0.72" step="0.01">
+  </div>
+
+  <div class="control">
+    <label>Margin <span id="marginVal"></span></label>
+    <input type="range" id="margin" min="0" max="80" value="25" step="1">
+  </div>
+
+  <div class="control">
+    <label>Corner Radius <span id="radiusVal"></span></label>
+    <input type="range" id="radius" min="0" max="40" value="10" step="1">
+  </div>
+
+  <hr>
+
+  <label class="checkbox-control">
+    <input type="checkbox" id="showMap"> Show displacement map
+  </label>
+
+  <label class="checkbox-control">
+    <input type="checkbox" id="invert"> Invert colors
+  </label>
+
+  <div class="actions">
+    <button onclick="resetDefaults()">Reset</button>
+    <button class="primary" onclick="downloadPNG()">Download PNG</button>
+  </div>
+
+  <div class="actions">
+    <button onclick="downloadSVG()">Download SVG</button>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="https://github.com/nmemodi/line-warp" target="_blank">GitHub</a> · MIT License
+  </div>
+</div>
+
+<div class="main">
+  <canvas id="canvas"></canvas>
+</div>
+
+<script>
+const SIZE = 800;
+const canvas = document.getElementById('canvas');
+canvas.width = SIZE;
+canvas.height = SIZE;
+const ctx = canvas.getContext('2d');
+
+// Controls
+const controls = {
+  letter: document.getElementById('letter'),
+  font: document.getElementById('font'),
+  fontWeight: document.getElementById('fontWeight'),
+  rotation: document.getElementById('rotation'),
+  offsetX: document.getElementById('offsetX'),
+  offsetY: document.getElementById('offsetY'),
+  lines: document.getElementById('lines'),
+  displacement: document.getElementById('displacement'),
+  blur: document.getElementById('blur'),
+  ridge: document.getElementById('ridge'),
+  gap: document.getElementById('gap'),
+  letterSize: document.getElementById('letterSize'),
+  margin: document.getElementById('margin'),
+  radius: document.getElementById('radius'),
+  showMap: document.getElementById('showMap'),
+  invert: document.getElementById('invert'),
+};
+
+const defaults = {
+  letter: 'S', font: 'Helvetica Neue', fontWeight: '900', rotation: 0, offsetX: 0, offsetY: 0,
+  lines: 13, displacement: 65, blur: 28, ridge: 0, gap: 0.35,
+  letterSize: 0.72, margin: 25, radius: 10,
+  showMap: false, invert: false,
+};
+
+function getParams() {
+  return {
+    letter: controls.letter.value || 'S',
+    font: controls.font.value,
+    fontWeight: controls.fontWeight.value,
+    rotation: +controls.rotation.value,
+    offsetX: +controls.offsetX.value,
+    offsetY: +controls.offsetY.value,
+    numLines: +controls.lines.value,
+    maxDisp: +controls.displacement.value,
+    blur: +controls.blur.value,
+    ridge: +controls.ridge.value / 100,
+    gapRatio: +controls.gap.value,
+    letterSize: +controls.letterSize.value,
+    margin: +controls.margin.value,
+    radius: +controls.radius.value,
+    showMap: controls.showMap.checked,
+    invert: controls.invert.checked,
+  };
+}
+
+function updateLabels() {
+  document.getElementById('linesVal').textContent = controls.lines.value;
+  document.getElementById('dispVal').textContent = controls.displacement.value + 'px';
+  document.getElementById('blurVal').textContent = controls.blur.value + 'px';
+  document.getElementById('ridgeVal').textContent = controls.ridge.value + '%';
+  document.getElementById('gapVal').textContent = (+controls.gap.value * 100).toFixed(0) + '%';
+  document.getElementById('letterSizeVal').textContent = (+controls.letterSize.value * 100).toFixed(0) + '%';
+  document.getElementById('rotationVal').textContent = controls.rotation.value + '\u00B0';
+  document.getElementById('offsetXVal').textContent = controls.offsetX.value + 'px';
+  document.getElementById('offsetYVal').textContent = controls.offsetY.value + 'px';
+  document.getElementById('marginVal').textContent = controls.margin.value + 'px';
+  document.getElementById('radiusVal').textContent = controls.radius.value + 'px';
+}
+
+function resetDefaults() {
+  controls.letter.value = defaults.letter;
+  controls.font.value = defaults.font;
+  controls.fontWeight.value = defaults.fontWeight;
+  controls.rotation.value = defaults.rotation;
+  controls.offsetX.value = defaults.offsetX;
+  controls.offsetY.value = defaults.offsetY;
+  controls.lines.value = defaults.lines;
+  controls.displacement.value = defaults.displacement;
+  controls.blur.value = defaults.blur;
+  controls.ridge.value = defaults.ridge;
+  controls.gap.value = defaults.gap;
+  controls.letterSize.value = defaults.letterSize;
+  controls.margin.value = defaults.margin;
+  controls.radius.value = defaults.radius;
+  controls.showMap.checked = defaults.showMap;
+  controls.invert.checked = defaults.invert;
+  updateLabels();
+  render();
+}
+
+// --- Displacement map ---
+function createDisplacementMap(p) {
+  const c = document.createElement('canvas');
+  c.width = SIZE; c.height = SIZE;
+  const g = c.getContext('2d');
+
+  g.fillStyle = '#fff';
+  g.fillRect(0, 0, SIZE, SIZE);
+
+  g.fillStyle = '#000';
+  const fontSize = SIZE * p.letterSize;
+  g.font = `${p.fontWeight} ${fontSize}px "${p.font}", sans-serif`;
+  g.textAlign = 'center';
+  g.textBaseline = 'middle';
+  g.save();
+  g.translate(SIZE / 2, SIZE / 2);
+  g.rotate(p.rotation * Math.PI / 180);
+  g.fillText(p.letter, p.offsetX, p.offsetY);
+  g.restore();
+
+  // Blur pass (smooth dome shape)
+  const blurred = document.createElement('canvas');
+  blurred.width = SIZE; blurred.height = SIZE;
+  const bg = blurred.getContext('2d');
+  bg.filter = `blur(${p.blur}px)`;
+  bg.drawImage(c, 0, 0);
+  const smoothData = bg.getImageData(0, 0, SIZE, SIZE).data;
+
+  if (p.ridge <= 0) return smoothData;
+
+  // Distance field (pointed ridge shape)
+  const letterPixels = g.getImageData(0, 0, SIZE, SIZE).data;
+  const mask = new Uint8Array(SIZE * SIZE);
+  for (let i = 0; i < SIZE * SIZE; i++) {
+    mask[i] = letterPixels[i * 4] < 128 ? 1 : 0;
+  }
+  const dist = distanceTransform(mask, SIZE, SIZE);
+
+  // Normalize
+  let maxDist = 0;
+  for (let i = 0; i < dist.length; i++) {
+    if (dist[i] > maxDist) maxDist = dist[i];
+  }
+
+  // Render distance field to canvas for blurring
+  const distCanvas = document.createElement('canvas');
+  distCanvas.width = SIZE; distCanvas.height = SIZE;
+  const dc = distCanvas.getContext('2d');
+  const distImg = dc.createImageData(SIZE, SIZE);
+  for (let i = 0; i < SIZE * SIZE; i++) {
+    const v = maxDist > 0 ? Math.round((1 - dist[i] / maxDist) * 255) : 255;
+    distImg.data[i * 4] = v;
+    distImg.data[i * 4 + 1] = v;
+    distImg.data[i * 4 + 2] = v;
+    distImg.data[i * 4 + 3] = 255;
+  }
+  dc.putImageData(distImg, 0, 0);
+
+  // Light blur on distance field to smooth pixelation
+  const distBlurred = document.createElement('canvas');
+  distBlurred.width = SIZE; distBlurred.height = SIZE;
+  const dbCtx = distBlurred.getContext('2d');
+  dbCtx.filter = `blur(${Math.max(3, p.blur * 0.15)}px)`;
+  dbCtx.drawImage(distCanvas, 0, 0);
+  const ridgeData = dbCtx.getImageData(0, 0, SIZE, SIZE).data;
+
+  // Blend smooth and ridge
+  const t = p.ridge;
+  for (let i = 0; i < smoothData.length; i += 4) {
+    const blended = smoothData[i] * (1 - t) + ridgeData[i] * t;
+    smoothData[i] = Math.round(blended);
+    smoothData[i + 1] = Math.round(blended);
+    smoothData[i + 2] = Math.round(blended);
+  }
+
+  return smoothData;
+}
+
+// Approximate Euclidean distance transform (chamfer 3-4)
+function distanceTransform(mask, w, h) {
+  const dist = new Float32Array(w * h);
+  const INF = w + h;
+
+  for (let i = 0; i < w * h; i++) {
+    dist[i] = mask[i] ? INF : 0;
+  }
+
+  // Forward pass
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const i = y * w + x;
+      if (dist[i] === 0) continue;
+      if (x > 0) dist[i] = Math.min(dist[i], dist[i - 1] + 1);
+      if (y > 0) dist[i] = Math.min(dist[i], dist[(y - 1) * w + x] + 1);
+      if (x > 0 && y > 0) dist[i] = Math.min(dist[i], dist[(y - 1) * w + x - 1] + 1.414);
+      if (x < w - 1 && y > 0) dist[i] = Math.min(dist[i], dist[(y - 1) * w + x + 1] + 1.414);
+    }
+  }
+
+  // Backward pass
+  for (let y = h - 1; y >= 0; y--) {
+    for (let x = w - 1; x >= 0; x--) {
+      const i = y * w + x;
+      if (dist[i] === 0) continue;
+      if (x < w - 1) dist[i] = Math.min(dist[i], dist[i + 1] + 1);
+      if (y < h - 1) dist[i] = Math.min(dist[i], dist[(y + 1) * w + x] + 1);
+      if (x < w - 1 && y < h - 1) dist[i] = Math.min(dist[i], dist[(y + 1) * w + x + 1] + 1.414);
+      if (x > 0 && y < h - 1) dist[i] = Math.min(dist[i], dist[(y + 1) * w + x - 1] + 1.414);
+    }
+  }
+
+  return dist;
+}
+
+function getHeight(data, x, y) {
+  const ix = Math.max(0, Math.min(SIZE - 1, Math.round(x)));
+  const iy = Math.max(0, Math.min(SIZE - 1, Math.round(y)));
+  return (255 - data[(iy * SIZE + ix) * 4]) / 255;
+}
+
+// --- Rounded rect helper ---
+function roundedRectPath(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+// --- Main render ---
+function render() {
+  const p = getParams();
+  const dispData = createDisplacementMap(p);
+
+  const bg = p.invert ? '#000' : '#fff';
+  const fg = p.invert ? '#fff' : '#000';
+
+  // Clear
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, SIZE, SIZE);
+
+  if (p.showMap) {
+    const imgData = ctx.createImageData(SIZE, SIZE);
+    for (let i = 0; i < dispData.length; i += 4) {
+      const v = 255 - dispData[i]; // height as brightness
+      imgData.data[i] = v;
+      imgData.data[i + 1] = v;
+      imgData.data[i + 2] = v;
+      imgData.data[i + 3] = 255;
+    }
+    ctx.putImageData(imgData, 0, 0);
+    return;
+  }
+
+  // Draw displaced lines with per-line rounded corners
+  const totalH = SIZE - 2 * p.margin;
+  const spacing = totalH / p.numLines;
+  const gapSize = spacing * p.gapRatio;
+  const bandH = spacing - gapSize;
+  const xStart = p.margin;
+  const xEnd = SIZE - p.margin;
+  const step = 1;
+  const r = Math.min(p.radius, bandH / 2, (xEnd - xStart) / 4);
+
+  ctx.fillStyle = fg;
+
+  for (let i = 0; i < p.numLines; i++) {
+    const baseY = p.margin + i * spacing + spacing / 2;
+    const topY = baseY - bandH / 2;
+    const botY = baseY + bandH / 2;
+
+    // Displacement at the four corners
+    const dTL = getHeight(dispData, xStart, topY) * p.maxDisp;
+    const dTR = getHeight(dispData, xEnd, topY) * p.maxDisp;
+    const dBL = getHeight(dispData, xStart, botY) * p.maxDisp;
+    const dBR = getHeight(dispData, xEnd, botY) * p.maxDisp;
+
+    ctx.beginPath();
+
+    // Start: left edge, just below top-left corner arc
+    ctx.moveTo(xStart, topY - dTL + r);
+
+    // Top-left corner arc
+    ctx.quadraticCurveTo(xStart, topY - dTL, xStart + r, topY - getHeight(dispData, xStart + r, topY) * p.maxDisp);
+
+    // Top edge: left to right
+    for (let x = xStart + r + step; x <= xEnd - r; x += step) {
+      ctx.lineTo(x, topY - getHeight(dispData, x, topY) * p.maxDisp);
+    }
+
+    // Top-right corner arc
+    ctx.lineTo(xEnd - r, topY - getHeight(dispData, xEnd - r, topY) * p.maxDisp);
+    ctx.quadraticCurveTo(xEnd, topY - dTR, xEnd, topY - dTR + r);
+
+    // Right edge
+    ctx.lineTo(xEnd, botY - dBR - r);
+
+    // Bottom-right corner arc
+    ctx.quadraticCurveTo(xEnd, botY - dBR, xEnd - r, botY - getHeight(dispData, xEnd - r, botY) * p.maxDisp);
+
+    // Bottom edge: right to left
+    for (let x = xEnd - r - step; x >= xStart + r; x -= step) {
+      ctx.lineTo(x, botY - getHeight(dispData, x, botY) * p.maxDisp);
+    }
+
+    // Bottom-left corner arc
+    ctx.lineTo(xStart + r, botY - getHeight(dispData, xStart + r, botY) * p.maxDisp);
+    ctx.quadraticCurveTo(xStart, botY - dBL, xStart, botY - dBL - r);
+
+    // Left edge back to start
+    ctx.closePath();
+    ctx.fill();
+  }
+}
+
+// --- SVG export ---
+function generateSVGPaths(p, dispData) {
+  const paths = [];
+  const totalH = SIZE - 2 * p.margin;
+  const spacing = totalH / p.numLines;
+  const gapSize = spacing * p.gapRatio;
+  const bandH = spacing - gapSize;
+  const xStart = p.margin;
+  const xEnd = SIZE - p.margin;
+  const step = 2;
+  const r = Math.min(p.radius, bandH / 2, (xEnd - xStart) / 4);
+  const f = (v) => v.toFixed(1);
+
+  for (let i = 0; i < p.numLines; i++) {
+    const baseY = p.margin + i * spacing + spacing / 2;
+    const topY = baseY - bandH / 2;
+    const botY = baseY + bandH / 2;
+
+    const dTL = getHeight(dispData, xStart, topY) * p.maxDisp;
+    const dTR = getHeight(dispData, xEnd, topY) * p.maxDisp;
+    const dBL = getHeight(dispData, xStart, botY) * p.maxDisp;
+    const dBR = getHeight(dispData, xEnd, botY) * p.maxDisp;
+
+    let d = `M ${f(xStart)} ${f(topY - dTL + r)}`;
+
+    // Top-left corner
+    d += ` Q ${f(xStart)} ${f(topY - dTL)} ${f(xStart + r)} ${f(topY - getHeight(dispData, xStart + r, topY) * p.maxDisp)}`;
+
+    // Top edge
+    for (let x = xStart + r + step; x <= xEnd - r; x += step) {
+      d += ` L ${x} ${f(topY - getHeight(dispData, x, topY) * p.maxDisp)}`;
+    }
+
+    // Top-right corner
+    d += ` L ${f(xEnd - r)} ${f(topY - getHeight(dispData, xEnd - r, topY) * p.maxDisp)}`;
+    d += ` Q ${f(xEnd)} ${f(topY - dTR)} ${f(xEnd)} ${f(topY - dTR + r)}`;
+
+    // Right edge
+    d += ` L ${f(xEnd)} ${f(botY - dBR - r)}`;
+
+    // Bottom-right corner
+    d += ` Q ${f(xEnd)} ${f(botY - dBR)} ${f(xEnd - r)} ${f(botY - getHeight(dispData, xEnd - r, botY) * p.maxDisp)}`;
+
+    // Bottom edge
+    for (let x = xEnd - r - step; x >= xStart + r; x -= step) {
+      d += ` L ${x} ${f(botY - getHeight(dispData, x, botY) * p.maxDisp)}`;
+    }
+
+    // Bottom-left corner
+    d += ` L ${f(xStart + r)} ${f(botY - getHeight(dispData, xStart + r, botY) * p.maxDisp)}`;
+    d += ` Q ${f(xStart)} ${f(botY - dBL)} ${f(xStart)} ${f(botY - dBL - r)}`;
+
+    d += ' Z';
+    paths.push(d);
+  }
+
+  return paths;
+}
+
+function downloadSVG() {
+  const p = getParams();
+  const dispData = createDisplacementMap(p);
+  const paths = generateSVGPaths(p, dispData);
+  const fg = p.invert ? '#fff' : '#000';
+  const bg = p.invert ? '#000' : '#fff';
+
+  let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SIZE} ${SIZE}" width="${SIZE}" height="${SIZE}">\n`;
+  svg += `  <rect width="${SIZE}" height="${SIZE}" fill="${bg}"/>\n`;
+  paths.forEach(d => {
+    svg += `  <path d="${d}" fill="${fg}"/>\n`;
+  });
+  svg += `</svg>`;
+
+  const blob = new Blob([svg], { type: 'image/svg+xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `line-warp-${p.letter.toLowerCase()}.svg`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function downloadPNG() {
+  const a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = `line-warp-${getParams().letter.toLowerCase()}.png`;
+  a.click();
+}
+
+// --- Wire up controls ---
+Object.values(controls).forEach(el => {
+  el.addEventListener('input', () => { updateLabels(); render(); });
+  el.addEventListener('change', () => { updateLabels(); render(); });
+});
+
+// Initial render
+updateLabels();
+render();
+</script>
+</body>
+</html>
